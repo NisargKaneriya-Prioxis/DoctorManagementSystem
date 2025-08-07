@@ -1,0 +1,12 @@
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/bin/Debug/net8.0/DMS.Common.deps.json
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/bin/Debug/net8.0/DMS.Common.dll
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/bin/Debug/net8.0/DMS.Common.pdb
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/DMS.Common.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/DMS.Common.AssemblyInfoInputs.cache
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/DMS.Common.AssemblyInfo.cs
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/DMS.Common.csproj.CoreCompileInputs.cache
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/DMS.Common.sourcelink.json
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/DMS.Common.dll
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/refint/DMS.Common.dll
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/DMS.Common.pdb
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/ref/DMS.Common.dll
