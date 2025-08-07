@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DMS.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+365b2fff2f9fe709397bc414f95e53095e72401f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a07ab4c48837e504d8835a29d04f2c5f0b0e4bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("DMS.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DMS.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
