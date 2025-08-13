@@ -1,22 +1,100 @@
+using DMS.Models.CommonModel;
 using DMS.Models.RequestModel;
 using DMS.Models.ResponceModel;
 using DMS.Models.ResponseModel;
 using DMS.Service.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace DMS.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class DoctorController : ControllerBase
+public class DoctorController : BaseController
 {
     private IDoctorRepository _doctorRepository;
     private ILogger<DoctorController> _logger;
+
 
     public DoctorController(IDoctorRepository doctorRepository, ILogger<DoctorController> logger)
     {
         _doctorRepository = doctorRepository;
         _logger = logger;
+    }
+    
+    //Getall doctor dynamic
+    [HttpGet("dynamicgetall")]
+    public async Task<ActionResult<IEnumerable<DoctorResponseModel>>> GetallDoctor([FromQuery] SearchRequestModel model)
+    {
+        var paramaters = FillParamesFromModel(model);
+        var list = await _doctorRepository.List(paramaters);
+        _logger.LogInformation("Repo excuted");
+        if (list != null)
+        {
+            var result = JsonConvert.DeserializeObject<List<DoctorResponseModel>>(list.Result?.ToString() ?? "[]") ?? [];
+            return Ok(result);
+        }
+        return NoContent();
+    }
+    
+    //GetBYSid doctor dynamic
+    [HttpGet("dynamicsid/{doctorSid}")]
+    public async Task<ActionResult<DoctorResponseModel>> GetByDoctorSID([FromRoute] string doctorSid)
+    {
+        var doctor = await _doctorRepository.GetByDoctorSID(doctorSid);
+        if (doctor == null)
+            return NotFound();
+
+        return Ok(doctor);
+    }
+    
+    //Insertdoctor or Update using dynamic
+    [HttpPost("dynamic/{doctorSid?}")]
+    public async Task<ActionResult<DoctorResponseModel>> CreateDoctororupdate([FromBody] DoctorRequestWithoutSidModel model,
+        [FromRoute] string? doctorSid )
+    {   
+        try
+        {
+            DoctorResponseModel? doctor = string.IsNullOrEmpty(doctorSid)
+                ? await _doctorRepository.InsertDoctor(model)
+                : await _doctorRepository.UpdateDoctordynamic(doctorSid,model);
+
+            if (doctor == null)
+            {
+                _logger.LogWarning("Doctor could not be inserted or updated. SID: {SID}", doctorSid ?? "null");
+                return NotFound("Doctor could not be inserted or updated.");
+            }
+
+            _logger.LogInformation("Successfully inserted or updated doctor. SID: {SID}", doctorSid ?? "new");
+            return Ok(doctor);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while inserting/updating doctor. SID: {SID}", doctorSid ?? "null");
+            return StatusCode(500, $"Error: {ex.Message}");
+        }
+    }
+    
+    //Delete Doctor Using dynamic 
+    [HttpDelete("(dynamicdelete){doctorSid}")]
+    public async Task<ActionResult> DeleteDoctor([FromRoute] string doctorSid)
+    {
+        _logger.LogInformation("Deleting doctor with SID: {SID}", doctorSid);
+        try
+        {
+            var result = await _doctorRepository.DeleteDoctordynamic(doctorSid);
+
+            if (!result)
+                return NotFound($"Doctor with SID '{doctorSid}' not found.");
+            
+            _logger.LogInformation("Successfully Deleted doctor");
+            return Ok("Doctor deleted successfully.");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while deleting doctor with SID: {DoctorSid}", doctorSid);
+            return StatusCode(500, $"Error: {ex.Message}");
+        }
     }
     
     

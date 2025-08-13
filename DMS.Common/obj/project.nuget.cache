@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/SyP5PL62+0=",
+  "dgSpecHash": "9tifRsVE36o=",
   "success": true,
   "projectFilePath": "/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/DMS.Common.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/nisargkaneriya/.nuget/packages/newtonsoft.json/13.0.4-beta1/newtonsoft.json.13.0.4-beta1.nupkg.sha512"
+  ],
   "logs": []
 }

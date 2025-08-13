@@ -191,3 +191,5 @@
 /Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DoctorManagmentSystem/bin/Debug/net8.0/FluentValidation.dll
 /Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DoctorManagmentSystem/bin/Debug/net8.0/FluentValidation.AspNetCore.dll
 /Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DoctorManagmentSystem/bin/Debug/net8.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DoctorManagmentSystem/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.AutoHistory.dll
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DoctorManagmentSystem/bin/Debug/net8.0/Newtonsoft.Json.dll

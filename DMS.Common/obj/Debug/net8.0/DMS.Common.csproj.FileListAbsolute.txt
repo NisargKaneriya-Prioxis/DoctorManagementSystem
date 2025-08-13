@@ -10,3 +10,4 @@
 /Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/refint/DMS.Common.dll
 /Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/DMS.Common.pdb
 /Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/ref/DMS.Common.dll
+/Users/nisargkaneriya/Documents/Nisarg/dotnet_projects/WebApplication3/DMS.Common/obj/Debug/net8.0/DMS.Common.csproj.AssemblyReference.cache

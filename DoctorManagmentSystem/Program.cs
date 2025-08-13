@@ -1,4 +1,5 @@
 using DMS.Models.Models.MyDoctorsDB;
+using DMS.Models.SpDbContext;
 using DMS.Models.Validator;
 using DMS.Service.Repository.Implementation;
 using DMS.Service.Repository.Interface;
@@ -25,13 +26,43 @@ public class Program
 
         builder.Host.UseSerilog();
         
+        //code for adding the connectionString
         var connectionString = builder.Configuration.GetConnectionString("DBConnection");
+        
+        //DBContext
+        builder.Services.AddDbContext<DoctorsDbContext>(options =>
+        {
+            options.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
+            {
+
+            });
+            options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            options.EnableSensitiveDataLogging(true);
+        }, ServiceLifetime.Transient);
+        
+        //SPCONTEXT CONFIGURATION
+        builder.Services.AddDbContext<DoctorManagementSpContext>(options =>
+        {
+            options.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
+            {
+
+                sqlOptions.EnableRetryOnFailure();
+
+            });
+            options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            options.EnableSensitiveDataLogging(true);
+        }, ServiceLifetime.Transient);
+        
+        // Register the UserService AND Unit OF Work
+        UnitOfWorkServiceCollectionExtentions.AddUnitOfWork<DoctorsDbContext>(builder.Services);
+        
         builder.Services.AddScoped<IDoctorRepository , DoctorRepository>();
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddControllers()
             .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<DoctorRequestModelValidator>());
         builder.Services.AddControllers()
             .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<DoctorRequestWithoutSidModelValidator>());
+        
         // Add services to the container.
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
